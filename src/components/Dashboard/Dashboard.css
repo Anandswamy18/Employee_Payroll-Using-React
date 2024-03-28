@@ -10,24 +10,7 @@ body {
     background: #F7F7F7 0% 0% no-repeat padding-box;
 }
 
-.dashboard-nav {
-    display: flex;
-    align-items: center;
-    height: 60px;
-    background: #FFFFFF 0% 0% no-repeat padding-box;
-    opacity: 1;
- 
-}
 
-.dash-logo{
-    cursor: pointer;
-}
-
-
-
-.dashboard,img {
-    margin-left: 180px;
-}
 
 .dashboard-employee {
     font: normal normal bolder 18px Montserrat;
@@ -45,28 +28,29 @@ body {
 }
 
 
-.dashboard-header{
+.dashboard-header {
 
     text-align: left;
     font: normal normal bold 24px Roboto;
     letter-spacing: 0px;
     color: #42515F;
     opacity: 1;
-    margin-left: 200px;
-    margin-top: 30px;
+    margin-left: -100px;
+    margin-top: 180px;
+    
 }
 
 .dashboard-head {
 
     position: absolute;
     left: 1138px;
-     top: 90px;
+    top: 90px;
     width: 150px;
     height: 50px;
     display: flex;
     align-items: center;
     gap: 25px;
-    
+
 
 
 }
@@ -111,23 +95,27 @@ body {
 
 }
 
-.dash-input{
-    width: 50px;
+.dash-input {
+    width: 150px;
     height: 40px;
     background: #FFFFFF 0% 0% no-repeat padding-box;
     box-shadow: 0px 1px 3px #00000029;
     border-radius: 28px;
     opacity: 1;
     border: 0px;
-    margin-left: -70px;
-    background-image: url(../../../src//assets/icons8-search-30.png);
-    background-position: center;
-    background-size: 20px;
+    margin-left: -180px;
+    /* background-image: url(../../../src//assets/icons8-search-30.png);
+    background-position:right ;
+    background-size: 20px; */
     cursor: pointer;
+    text-align: center;
+    font-size: 18px;
+    font-family: serif;
+    font-weight: 500;
 }
 
 
-.dashboard_table-header{
+.dashboard_table-header {
     background: #42515F 0% 0% no-repeat padding-box;
     border-radius: 3px 3px 0px 0px;
     opacity: 1;
@@ -141,11 +129,11 @@ body {
 }
 
 .dashboard-field {
-    
-    width:1090px;
-   position: relative;
-   top: 30px;
-   left: 200px;
+
+    width: 1090px;
+    position: absolute;
+    top: 150px;
+    left: 200px;
     height: 550px;
     background: #FFFFFF 0% 0% no-repeat padding-box;
     box-shadow: 0px 3px 6px #00000029;
@@ -155,13 +143,13 @@ body {
     height: auto;
 }
 
-.dashboard-table{
-    width: 100%; 
+.dashboard-table {
+    width: 100%;
     align-items: center;
 
 }
 
-.dashboard_table-header{
+.dashboard_table-header {
     background: #42515F 0% 0% no-repeat padding-box;
     border-radius: 3px 3px 0px 0px;
     opacity: 1;
@@ -172,7 +160,7 @@ body {
     color: #FFFFFF;
     text-transform: uppercase;
     opacity: 1;
-    
+
 }
 
 .dashboard-contents {
@@ -192,89 +180,94 @@ body {
 
 }
 
-.namefield{
+.namefield {
     width: 300px;
-   
+
 }
-.departmentfield{
+
+.departmentfield {
     width: 300px;
 }
-.icon-fields{
+
+.icon-fields {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     margin-top: 10px;
     gap: 20px;
-   
+
 }
 
-.deleteicon{
+.deleteicon {
     cursor: pointer;
-    
+
 }
 
-.editicon{
+.editicon {
     cursor: pointer;
     margin-top: 2px;
 }
 
 
-.dashboard-namefield{
+.dashboard-namefield {
     display: flex;
     align-items: center;
-    
+
 }
 
-.dash-image-blk{
-   
-  
+.dash-image-blk {
+
+
     width: 70px;
-   
+
 
 }
 
-.dash-name{
- 
+.dash-name {
+
     width: 150px;
 }
-.dash-image{
+
+.dash-image {
     margin-left: -10px;
-    margin:-20px;
+    margin: -20px;
     width: 43px;
     height: 43px;
- 
+
 }
 
 
 
-.dash-dept-blk{
+.dash-dept-blk {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 15px;
-   
-   
-    
+
+
+
 
 }
 
-.dash-dept{
+.dash-dept {
     background: #E9FEA5 0% 0% no-repeat padding-box;
     border-radius: 13px;
     width: 70px;
     font: normal normal normal 15px Roboto;
-letter-spacing: 0px;
-color: #3D3D3D;
+    letter-spacing: 0px;
+    color: #3D3D3D;
 }
 
 
-.no-data-found{
-   
+.no-data-found {
+
     text-align: center;
-   background-color: #e33a07;
+    background-color: #e33a07;
     font-size: 25px;
-    color:#FFFFFF;
+    font-weight: 600;
+    font-style: oblique;
+    color: #FFFFFF;
     border-radius: 20px;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }

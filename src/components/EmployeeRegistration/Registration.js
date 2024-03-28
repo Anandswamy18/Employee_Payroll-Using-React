@@ -5,7 +5,6 @@ import profileImg1 from '../../assets/profile1.png'
 import profileImg2 from '../../assets/profile2.png'
 import profileImg3 from '../../assets/profile3.png'
 import profileImg4 from '../../assets/profile4.png'
-import Logo from "../../../src/assets/logo.png"
 import "./Registration.css"
 
 
@@ -92,16 +91,14 @@ export default function Registration() {
     localStorage.setItem('empData', JSON.stringify(existingData));
 
 
-    navigate("/");
+    navigate("/dashboard");
   };
 
   const handleCancel = () => {
-    navigate("/")
+    navigate("/dashboard")
   }
 
-  const handleNavigate = () => {
-    navigate("/")
-  }
+  
 
   const handleReset = (e) => {
     setEmpData({
@@ -124,12 +121,7 @@ export default function Registration() {
     <>
 
 
-      <div className="reg-nav">
-        <img src={Logo} alt="" />
-        <div className="reg-logo" onClick={handleNavigate}><pre className="reg-employee"> EMPLOYEE <br />
-          <div className="reg-payroll"> PAYROLL</div></pre>
-        </div>
-      </div>
+     
 
       <div className="field">
         <span>Employee Payroll form</span>
