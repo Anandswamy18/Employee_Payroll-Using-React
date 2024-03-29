@@ -31,7 +31,6 @@ export default function Registration() {
   useEffect(() => {
 
     if (empId >= 0) {
-      console.log(empId);
       const existingData = localStorage.getItem("empData")
       setEmpData(JSON.parse(existingData)[empId])
     }
@@ -98,7 +97,7 @@ export default function Registration() {
     navigate("/dashboard")
   }
 
-  
+
 
   const handleReset = (e) => {
     setEmpData({
@@ -121,7 +120,7 @@ export default function Registration() {
     <>
 
 
-     
+
 
       <div className="field">
         <span>Employee Payroll form</span>

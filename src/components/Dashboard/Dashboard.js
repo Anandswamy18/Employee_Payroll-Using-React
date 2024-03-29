@@ -30,7 +30,7 @@ function Dashboard() {
         navigate("/registration")
     }
 
-   
+
 
     const handleDelete = (index) => {
         const updatedEmpData = [...empData];
@@ -49,16 +49,16 @@ function Dashboard() {
     return (
         <>
 
-            
+
             <div className="dashboard-header">Employee Details</div>
-            <div className="dashboard-head"><input type="search" placeholder="search" onChange={(e) => setSearch(e.target.value)} className="dash-input" />
+            <div className="dashboard-head"><input type="search" placeholder="Search" onChange={(e) => setSearch(e.target.value)} className="dash-input" />
                 <button className="dashboard-symbol" onClick={handleAddUser}>
                     <span>+</span>
                     <span className="dashboard-text">Add User</span>
                 </button>
             </div>
 
-            <div className="dashboard-field">
+            <div className="dashboard-field">       
                 {empData.length === 0 ? (
                     <div className="no-data-found">
 
@@ -77,8 +77,8 @@ function Dashboard() {
                         {empData.filter((employee) => {
                             return search.toLowerCase() === '' ? employee : employee.name.toLowerCase().includes(search)
                                 || (Array.isArray(employee.department) && employee.department.some(dep => dep.toLowerCase().includes(search)) ||
-                                employee.salary.toLowerCase().includes(search));
-                                
+                                    employee.salary.toLowerCase().includes(search));
+
                         })
                             .map((employee, index) => (
                                 <tr key={index} className="dashboard-contents">

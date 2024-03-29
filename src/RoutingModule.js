@@ -30,7 +30,7 @@ function RoutingModule() {
             children: [
                 { path: "dashboard", element: <Dashboard /> },
                 { path: "registration", element: <Registration /> },
-                {path: '/edit/:empId',element: <Registration />}
+                { path: '/edit/:empId', element: <Registration /> }
 
             ]
         },

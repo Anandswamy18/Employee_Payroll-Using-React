@@ -79,6 +79,10 @@ body {
 
     }
 
+   
+
+    
+
     .dashboard-text {
         opacity: 1;
         font: normal normal normal 18px Roboto;
@@ -104,15 +108,14 @@ body {
     opacity: 1;
     border: 0px;
     margin-left: -180px;
-    /* background-image: url(../../../src//assets/icons8-search-30.png);
-    background-position:right ;
-    background-size: 20px; */
     cursor: pointer;
-    text-align: center;
+    text-align: center ;
     font-size: 18px;
     font-family: serif;
     font-weight: 500;
 }
+
+
 
 
 .dashboard_table-header {
@@ -263,11 +266,14 @@ body {
 .no-data-found {
 
     text-align: center;
-    background-color: #e33a07;
-    font-size: 25px;
+    background-image: url(https://i.pinimg.com/originals/96/dd/76/96dd76d35704327ab8ddc1999e3be677.gif);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    font-size: 30px;
     font-weight: 600;
     font-style: oblique;
-    color: #FFFFFF;
+    color:#05f509;
     border-radius: 20px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
