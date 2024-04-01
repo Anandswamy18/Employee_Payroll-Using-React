@@ -27,6 +27,16 @@ export default function Registration() {
   })
   const navigate = useNavigate()
   const { empId } = useParams()
+  const [nameError, setNameError] = useState(false)
+  const [nameRegError, setRegNameError] = useState(false)
+  const nameRegex = /^[a-zA-Z]+(?:[' -][a-zA-Z]+)*$/;
+  const [imageError, setImageError] = useState(false);
+  const [genderError, setGenderError] = useState(false);
+  const [departmentError, setDepartmentError] = useState(false);
+  const [salaryError, setSalaryError] = useState(false);
+  const [dateError, setDateError] = useState(false);
+
+
 
   useEffect(() => {
 
@@ -37,6 +47,9 @@ export default function Registration() {
   }, []);
 
   const handleChange = (e) => {
+
+
+
     const { name, value, checked, type } = e.target;
 
     if (type === 'checkbox') {
@@ -45,11 +58,13 @@ export default function Registration() {
           ...prevState,
           department: [...prevState.department, value]
         }));
+        setDepartmentError(false);
       } else {
         setEmpData(prevState => ({
           ...prevState,
           department: prevState.department.filter(dep => dep !== value)
         }));
+
       }
     } else if (name === 'day' || name === 'month' || name === 'year') {
       setEmpData(prevState => ({
@@ -58,13 +73,82 @@ export default function Registration() {
           ...prevState.startDate,
           [name]: value
         }
+
       }));
-    } else {
+      setDateError(false);
+    } else if (type === 'radio' && name === 'pimage') {
+      setEmpData(prevState => ({
+        ...prevState,
+        pimage: value
+      }));
+      setImageError(false)
+
+    }
+    else if (type === 'radio' && name === 'gender') {
+      setEmpData(prevState => ({
+        ...prevState,
+        gender: value
+
+      }));
+      setGenderError(false)
+
+    }
+
+
+    else if (name === 'name') {
       setEmpData(prevState => ({
         ...prevState,
         [name]: value
       }));
+      let nameErr = e.target.value;
+      if (nameErr.length < 3) {
+        setNameError(true)
+      }
+
+
+      else {
+        setNameError(false)
+      }
+
+      let nameRegErr = e.target.value; {
+        if (!nameRegErr.match(nameRegex)) {
+          setRegNameError(true)
+        }
+        else setRegNameError(false)
+      }
     }
+
+    else if (name === 'salary') {
+      setEmpData(prevState => ({
+        ...prevState,
+        [name]: value
+      }));
+
+      setSalaryError(false)
+
+    }
+
+    else if (name === 'notes') {
+      setEmpData(prevState => ({
+        ...prevState,
+        [name]: value
+      }));
+
+    }
+
+
+    if (name === 'pimage') {
+      setImageError(value === "");
+    }
+
+    if (name === 'gender') {
+      setGenderError(value === "");
+    }
+
+
+
+
+
   };
 
 
@@ -74,6 +158,16 @@ export default function Registration() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (!empData.name || !empData.department.length || !empData.salary || !empData.startDate.day || !empData.startDate.month || !empData.startDate.year || !empData.gender || !empData.pimage) {
+      if (!empData.name) setNameError(true);
+      if (!empData.department.length) setDepartmentError(true);
+      if (!empData.salary) setSalaryError(true);
+      if (!empData.gender) setGenderError(true)
+      if (!empData.pimage) setImageError(true)
+      if (!empData.startDate.day || !empData.startDate.month || !empData.startDate.year) setDateError(true);
+      return;
+    }
 
     let existingData = JSON.parse(localStorage.getItem('empData')) || [];
 
@@ -112,6 +206,13 @@ export default function Registration() {
       notes: ""
 
     })
+    setNameError(false);
+    setRegNameError(false);
+    setImageError(false);
+    setGenderError(false);
+    setSalaryError(false);
+    setDateError(false);
+    setDepartmentError(false);
   }
   return (
 
@@ -126,14 +227,24 @@ export default function Registration() {
         <span>Employee Payroll form</span>
 
 
-        <form action="" onSubmit={handleSubmit}>
+        <form action="" onSubmit={handleSubmit} >
           <div className="reg-elements">
             <div className="reg-label">
               <label htmlFor="name" className="label">Name</label>
 
               <TextField label="enter name" id="outlined-size-small" size="small" className="name-input" name="name" value={empData.name}
                 onChange={handleChange} />
+              {nameError || nameRegError ?
+
+                <span className="nameerror" style={{ color: 'red', fontSize: 13 }}>
+                  {nameError ? "Name length should be greater than two letters." : ""}
+                  {nameError && nameRegError ? " and " : ""}
+                  {nameRegError ? "accepts only alphabets." : ""}
+                </span>
+
+                : ""}
             </div>
+
 
 
             <div className="reg-label">
@@ -145,6 +256,7 @@ export default function Registration() {
                 <input type="radio" name="pimage" value={profileImg3} checked={empData.pimage === profileImg3} onChange={handleChange} /><img src={profileImg3} alt="" className="img3" />
                 <input type="radio" name="pimage" value={profileImg4} checked={empData.pimage === profileImg4} onChange={handleChange} /><img src={profileImg4} alt="" className="img4" />
               </div>
+              {imageError ? <span className="imageerror" style={{ color: 'red', fontSize: 13 }} >please select profile.</span> : ""}
             </div>
 
             <div className="gen-label">
@@ -153,6 +265,7 @@ export default function Registration() {
                 <input type="radio" name="gender" value={"male"} checked={empData.gender === "male"} id="male" className="gender" onChange={handleChange} /> Male
                 <input type="radio" name="gender" value={"Female"} checked={empData.gender === "Female"} id="female" className="gender" onChange={handleChange} /> Female
               </div>
+              {genderError ? <span className="gendererror" style={{ color: 'red', fontSize: 13 }} >please select gender.</span> : ""}
             </div>
 
 
@@ -165,6 +278,7 @@ export default function Registration() {
                 <input type="checkbox" name="department" value={"Enginerr"} checked={empData.department.includes("Enginerr")} className="deptartment" onChange={handleChange} /> Enginerr
                 <input type="checkbox" name="department" value={"Other"} checked={empData.department.includes("Other")} className="deptartment" onChange={handleChange} /> Other
               </div>
+              {departmentError ? <span className="departmenterror" style={{ color: 'red', fontSize: 13 }} >please select department.</span> : ""}
             </div>
 
 
@@ -179,6 +293,13 @@ export default function Registration() {
                   <option value="50000">50000</option>
                 </select>
               </div>
+              {salaryError && (
+
+                <span className="salaryerror" style={{ color: "red", fontSize: 13 }}>
+                  Please select a salary.
+                </span>
+
+              )}
             </div>
 
 
@@ -187,32 +308,38 @@ export default function Registration() {
 
               <div className="reg-date">
                 <select name="day" className="select-date" value={empData.startDate.day} onChange={handleChange}>
-                  <option >Day</option>
+                  <option  value="" disabled >Day </option>
                   <option value="1">1</option>
                   <option value="2">2</option>
                   <option value="3">3</option>
                 </select>
 
                 <select name="month" className="select-month" value={empData.startDate.month} onChange={handleChange}>
-                  <option >Month</option>
+                  <option   value="" disabled>Month</option>
                   <option value="Jan">Jan</option>
                   <option value="Feb">Feb</option>
                   <option value="Mar">Mar</option>
                 </select>
 
                 <select name="year" className="select-year" value={empData.startDate.year} onChange={handleChange}>
-                  <option value="">Year</option>
+                  <option value="" disabled>Year</option>
                   <option value="2000">2000</option>
                   <option value="2000">2000</option>
                   <option value="2000">2000 </option>
                 </select>
               </div>
+              {dateError && (
+                <span className="dateerror" style={{ color: "red", fontSize: 13 }}>
+                  Please select a complete start date.
+                </span>
+
+              )}
             </div>
 
             <div className="note-label">
               <label htmlFor="notes">Notes</label>
               <div className="reg-text">
-                <textarea className="text-area" name="notes" cols="60" rows="4" value={empData.notes} onChange={handleChange} required></textarea>
+                <textarea className="text-area" name="notes" cols="60" rows="4" value={empData.notes} onChange={handleChange} ></textarea>
               </div>
             </div>
 

@@ -337,3 +337,59 @@ span {
     color: #42515F;
     opacity: 1;
 }
+
+
+.nameerror{
+   
+   
+    align-items: center;
+    position:absolute;
+    left: 234px;
+    top: 105px;
+    height: 0px;
+  
+    
+}
+
+.imageerror{
+   
+    align-items: center;
+    position:absolute;
+    left: 234px;
+    top: 170px;
+   
+    
+}
+
+.gendererror{
+   
+   
+    align-items: center;
+    position:absolute;
+    left:234px;
+    top: 218px;
+    
+    
+}
+
+.departmenterror{
+    align-items: center;
+    position:absolute;
+    left:235px;
+    top: 280px;
+}
+
+
+.salaryerror{
+    align-items: center;
+    position:absolute;
+    left:236px;
+    top: 355px;
+}
+
+.dateerror{
+    align-items: center;
+    position:absolute;
+    left:236px;
+    top: 419px;
+}
